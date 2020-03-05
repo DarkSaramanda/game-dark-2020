@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
 
 public class PlayerConroller : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class PlayerConroller : MonoBehaviour
     Camera cam;
     public LayerMask walkableLayer;
 
-    void Start()
+    void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         cam = Camera.main;
