@@ -10,7 +10,7 @@ namespace NavGame.Core
         float cooldown = 0f;
 
 
-        protected virtual void update()
+        protected virtual void Update()
         {
             DescreaseAttackCooldown();
         }

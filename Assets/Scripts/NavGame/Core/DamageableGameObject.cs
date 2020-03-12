@@ -7,6 +7,7 @@ namespace NavGame.Core
     public class DamageableGameObject : TouchableGameObject
     {
         public int currentHealth;
+        
         public Stats stats;
 
         protected virtual void Awake()
