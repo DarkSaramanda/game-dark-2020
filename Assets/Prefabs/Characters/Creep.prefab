@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1068860459376791614
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 90822353198894266}
+  m_Layer: 0
+  m_Name: healthPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &90822353198894266
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068860459376791614}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.14, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8990664902592929025}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8990664902010881424
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,6 +134,7 @@ GameObject:
   - component: {fileID: 8990664902592929026}
   - component: {fileID: 8990664902592929027}
   - component: {fileID: 8990664902592929052}
+  - component: {fileID: 7955268420578056984}
   m_Layer: 0
   m_Name: Creep
   m_TagString: Untagged
@@ -123,6 +154,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8990664902010881431}
+  - {fileID: 90822353198894266}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -165.51901, z: 0}
@@ -176,6 +208,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f19262a65e05d49b4d3afb7b0c6c91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  contactRadius: 0.5
+  currentHealth: 0
+  stats:
+    maxHealth: 100
+    damage: 10
+    armor: 1
+    attackSpeed: 1
+--- !u!114 &7955268420578056984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8990664902592929053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24792d0c91242824eb60845da5656ee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healtUIPrefab: {fileID: 2456855218844686736, guid: 7489129b25b79b045ba701b7d5b0cdb4,
+    type: 3}
+  healtPosition: {fileID: 90822353198894266}
 --- !u!1 &8990664903763167556
 GameObject:
   m_ObjectHideFlags: 0
