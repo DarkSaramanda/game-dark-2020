@@ -1026,7 +1026,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1411962692}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33.77, y: 0, z: 6.26}
+  m_LocalPosition: {x: 33.77, y: 0, z: 6.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1619283925}
@@ -1043,7 +1043,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1411962692}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1.5
+  m_Radius: 1.03
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 0
@@ -1084,13 +1084,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fae53fc063ddef24192d44814fd3c2e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contactRadius: 1.53
-  currentHealth: 0
-  stats:
+  contactRadius: 1.17
+  defenseStats:
     maxHealth: 100
-    damage: 10
     armor: 1
-    attackSpeed: 1
+  currentHealth: 0
 --- !u!114 &1411962697
 MonoBehaviour:
   m_ObjectHideFlags: 0
