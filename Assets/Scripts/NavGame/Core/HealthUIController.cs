@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace NavGame.Core
 {
@@ -11,9 +12,13 @@ namespace NavGame.Core
         public GameObject healtUIPrefab;
         public Transform healtPosition;
 
-        GameObject healtUI;
+        GameObject healthUI;
 
         Transform cam;
+
+        DamageableGameObject damageable;
+
+        Image healthSlider;
 
         void Awake()
         {
@@ -23,15 +28,20 @@ namespace NavGame.Core
                 throw new Exception("A WorldSpace canvas was needed");
             }
             cam = Camera.main.transform;
-            healtUI = Instantiate(healtUIPrefab, canvas.transform);
+            healthUI = Instantiate(healtUIPrefab, canvas.transform);
+            healthSlider = healthUI.transform.GetChild(0).GetComponent<Image>();
+            damageable = GetComponent<DamageableGameObject>();
+
+            damageable.onHealthChanged += UpdateHealth;
+            damageable.onDied += DestroyHealth;
         }
 
         void LateUpdate()
         {
-            if (healtUI != null)
+            if (healthUI != null)
             {
-                healtUI.transform.position = healtPosition.position;
-                healtUI.transform.forward = -cam.forward;
+                healthUI.transform.position = healtPosition.position;
+                healthUI.transform.forward = -cam.forward;
             }
         }
 
@@ -45,6 +55,21 @@ namespace NavGame.Core
                 }
             }
             return null;
+        }
+
+
+        void UpdateHealth(int maxHealth, int currentHealth)
+        {
+            if (healthUI != null)
+            {
+                float healthPercent = (float)currentHealth / maxHealth;
+                healthSlider.fillAmount = healthPercent;
+            }
+        }
+
+        void DestroyHealth()
+        {
+            Destroy(healthUI);
         }
     }
 }
