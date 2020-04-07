@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NavGame.Core
 {
-    public class TouchableGameObject : MonoBehaviour
+    public class TouchableGameObject : BasicGameObject
     {
         public float contactRadius = 0.5f;
 
@@ -13,7 +13,7 @@ namespace NavGame.Core
             float distance = Vector3.Distance(transform.position, other.transform.position);
             return distance < contactRadius + other.contactRadius;
         }
-        protected virtual void OnDrawnGizmosSelected()
+        protected virtual void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, contactRadius);
