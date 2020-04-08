@@ -38,7 +38,6 @@ public class CreepController : AttackGameObject
         
     }
 
-    // Update is called once per frame
     void Start()
     {
         if (finalTarget != null)
