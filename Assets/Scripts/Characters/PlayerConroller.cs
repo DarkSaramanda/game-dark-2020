@@ -13,6 +13,8 @@ public class PlayerConroller : TouchableGameObject
     public LayerMask walkableLayer;
     public LayerMask collectibleLayer;
 
+    CollectibleGameObject pickupTarget;
+
 
     void Awake()
     {
@@ -22,7 +24,14 @@ public class PlayerConroller : TouchableGameObject
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(1)){
+        ProcessInput();
+        UpdateCollect();
+    }
+
+    void ProcessInput()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
@@ -34,7 +43,23 @@ public class PlayerConroller : TouchableGameObject
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, collectibleLayer))
             {
                 Debug.Log("Collectible: " + hit.collider.name);
+                pickupTarget = hit.collider.gameObject.GetComponent<CollectibleGameObject>();
                 agent.SetDestination(hit.point);
+            }
+            else
+            {
+                pickupTarget = null;
+            }
+
+        }
+    }
+    void UpdateCollect()
+    {
+        if (pickupTarget != null)
+        {
+            if(IsInTouch(pickupTarget))
+            {
+                pickupTarget.Pickup();
             }
         }
     }
