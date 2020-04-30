@@ -11,6 +11,7 @@ public class PlayerConroller : TouchableGameObject
     NavMeshAgent agent;
     Camera cam;
     public LayerMask walkableLayer;
+    public LayerMask collectibleLayer;
 
 
     void Awake()
@@ -23,11 +24,17 @@ public class PlayerConroller : TouchableGameObject
     {
         if (Input.GetMouseButtonDown(1)){
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit Hit;
+            RaycastHit hit;
 
-            if (Physics.Raycast(ray, out Hit, Mathf.Infinity, walkableLayer))
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, walkableLayer))
             {
-                agent.SetDestination(Hit.point);
+                agent.SetDestination(hit.point);
+            }
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, collectibleLayer))
+            {
+                Debug.Log("Collectible: " + hit.collider.name);
+                agent.SetDestination(hit.point);
             }
         }
     }
