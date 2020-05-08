@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NavGame.Managers;
 
-public class Level01Manager : MonoBehaviour
+public class Level01Manager : LevelManager
 {
     
     public Transform [] badSpawn;
@@ -19,7 +20,7 @@ public class Level01Manager : MonoBehaviour
         StartCoroutine(SpawnBad());
     }
 
-    IEnumerator SpawnBad()
+    protected override IEnumerator SpawnBad()
     {
         yield return new WaitForSeconds(waitTimeFirstWave);
         for (int i = 0; i < badWaves; i++)
