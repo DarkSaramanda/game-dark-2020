@@ -15,10 +15,7 @@ public class Level01Manager : LevelManager
     public float waitTimeFirstWave = 2f;
     public float waitTimeBetweenWaves = 4f;
 
-    void Start()
-    {
-        StartCoroutine(SpawnBad());
-    }
+    
 
     protected override IEnumerator SpawnBad()
     {
